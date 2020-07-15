@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
+// # Front-end Style Guide
+
+// ## Layout
+
+// The designs were created to the following widths:
+
+// - Mobile: 375px
+// - Desktop: 1440px
+
+// ## Colors
+
+// ### Primary
+
+$cyan: #2acfcf;
+$darkViolet: #3b3054;
+
+// ### Secondary
+
+$red: #f46262;
+
+// ### Neutral
+
+$gray: #bfbfbf;
+$grayishViolet: #9e9aa7;
+$veryDarkBlue: #35323e;
+$veryDarkViolet: #232127;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 18px;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 80px;
+  line-height: 90px;
+  /* or 112% */
+  color: $veryDarkViolet;
+
+  letter-spacing: -2px;
+}
+h3 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: $veryDarkViolet;
+}
+h4 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 33px;
+  color: $veryDarkViolet;
+}
+h5 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 36px;
+  color: $grayishViolet;
+  letter-spacing: 0.15px;
+}
+
+a {
+  color: $grayishViolet;
+  text-decoration: none;
+}
+
+p {
+  color: $grayishViolet;
+}
+
+button {
+  width: 197px;
+  height: 56px;
+  background: #2bd0d0;
+  border-radius: 28px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: normal;
+  border: none;
+}
+
+.container {
+  .header-container {
+    height: 750px;
+
+    nav {
+      display: flex;
+      height: 53px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 40px 165px 118px 165px;
+
+      .links-container {
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: 45px;
+        }
+
+        ul {
+          list-style-type: none;
+          overflow: hidden;
+
+          li {
+            display: inline;
+            margin-right: 30px;
+          }
+        }
+      }
+
+      .login-signup-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        ul {
+          list-style-type: none;
+          overflow: hidden;
+
+          li {
+            display: inline;
+            margin-right: 30px;
+          }
+        }
+      }
+    }
+
+    .cta-container {
+      border: 1px solid black;
+      height: 344px;
+      margin: 0 165px 194px 165px;
+
+      .cta-content {
+        width: 576px;
+      }
+    }
+  }
+}

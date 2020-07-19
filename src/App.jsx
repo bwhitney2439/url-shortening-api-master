@@ -5,7 +5,7 @@ const App = () => {
   return (
     <React.Fragment>
       <header className="header-container">
-        <div className="h eader-content-container">
+        <div className="header-content-container">
           <nav>
             <div className="links-container">
               <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">

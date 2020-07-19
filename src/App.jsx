@@ -16,22 +16,14 @@ const App = () => {
                 />
               </svg>
               <ul>
-                <li>
-                  <a href="">Features</a>
-                </li>
-                <li>
-                  <a href="">Pricing</a>
-                </li>
-                <li>
-                  <a href="">Resources</a>
-                </li>
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>Resources</li>
               </ul>
             </div>
             <div className="login-signup-container">
               <ul>
-                <li>
-                  <a href="">Login</a>
-                </li>
+                <li>Login</li>
               </ul>
               <button>Sign up</button>
             </div>

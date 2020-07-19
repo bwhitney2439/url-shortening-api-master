@@ -138,8 +138,9 @@ header {
             font-size: 15px;
             line-height: 22px;
             color: #9e9aa8;
+            cursor: pointer;
 
-            :hover {
+            &:hover {
               color: #34313d;
             }
           }
@@ -161,6 +162,12 @@ header {
             font-weight: bold;
             font-size: 15px;
             line-height: 22px;
+            color: #9e9aa8;
+            cursor: pointer;
+
+            &:hover {
+              color: #34313d;
+            }
           }
         }
 

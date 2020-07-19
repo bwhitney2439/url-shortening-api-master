@@ -3,10 +3,9 @@ import "./App.scss";
 import SVGImages from "./SVGImages";
 const App = () => {
   return (
-    // <div className="container">
-    <>
+    <React.Fragment>
       <header className="header-container">
-        <div className="header-content-container">
+        <div className="h eader-content-container">
           <nav>
             <div className="links-container">
               <svg xmlns="http://www.w3.org/2000/svg" width="121" height="33">
@@ -166,7 +165,7 @@ const App = () => {
         </div>
       </footer>
       {/* // </div> */}
-    </>
+    </React.Fragment>
   );
 };
 

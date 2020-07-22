@@ -37,7 +37,7 @@ $veryDarkViolet: #232127;
 #root {
   width: 100%;
   overflow-x: hidden;
-  background-color: #f2f2f2;
+  background: #f2f2f2;
 }
 
 body {
@@ -211,7 +211,7 @@ main {
     width: 1440px;
     margin: auto;
     position: relative;
-    padding: 204px 165px 120px 164px;
+    padding: 108px 165px 120px 164px;
     .url-copy-container {
       display: flex;
       align-items: center;
@@ -238,13 +238,73 @@ main {
         font-size: 20px;
         line-height: 36px;
         letter-spacing: 0.15px;
-        // opacity: 0.5;
+
+        ::placeholder {
+          /* Chrome, Firefox, Opera, Safari 10.1+ */
+          font-style: normal;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 36px;
+          letter-spacing: 0.15px;
+          color: #34313d;
+          mix-blend-mode: normal;
+          opacity: 0.5;
+        }
+      }
+
+      small {
+        position: absolute;
+        left: 5.77%;
+        right: 81.53%;
+        top: calc(50% - 18px / 2 + 47px);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0.109091px;
+        color: #f46363;
       }
 
       button {
         border-radius: 10px;
         width: 188px;
         height: 64px;
+      }
+    }
+    .shortened-url-container {
+      margin-bottom: 120px;
+      .shortened-url-content-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 24px 18px 32px;
+        height: 72px;
+        background-color: white;
+        border-radius: 5px;
+        margin-bottom: 16px;
+
+        &:last-of-type {
+          margin-bottom: unset;
+        }
+
+        button {
+          width: 103px;
+          height: 40px;
+          border-radius: 5px;
+          text-transform: capitalize;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 15px;
+          line-height: 22px;
+          color: #ffffff;
+        }
+        p:nth-child(1) {
+          flex-grow: 1;
+        }
+
+        p:nth-child(2) {
+          margin-right: 24px;
+        }
       }
     }
 
@@ -404,7 +464,7 @@ footer {
           line-height: 22px;
           text-transform: capitalize;
           letter-spacing: -0.234375px;
-
+          cursor: pointer;
           color: #bfbfbf;
 
           &:nth-child(1) {
@@ -413,10 +473,16 @@ footer {
             font-weight: bold;
             font-size: 16px;
             line-height: 24px;
-
             letter-spacing: -0.25px;
-
             color: #ffffff;
+            cursor: unset;
+            &:hover {
+              color: #ffffff;
+            }
+          }
+
+          &:hover {
+            color: #2bd0d0;
           }
         }
       }
@@ -428,6 +494,12 @@ footer {
       width: 168px;
       height: 24px;
       align-self: flex-start;
+
+      svg {
+        :hover {
+          fill: #2bd0d0;
+        }
+      }
     }
   }
 }

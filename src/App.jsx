@@ -49,7 +49,20 @@ const App = () => {
         <div className="main-content-container">
           <div className="url-copy-container">
             <input placeholder="Shorten a link here..." type="text" />
+            <small>Please add a link</small>
             <button>Shorten It!</button>
+          </div>
+          <div className="shortened-url-container">
+            <div className="shortened-url-content-container">
+              <p>https://shortenedUrl.test</p>
+              <p>https://rel.link/test</p>
+              <button>copy</button>
+            </div>
+            <div className="shortened-url-content-container">
+              <p>https://shortenedUrl.test</p>
+              <p>https://rel.link/test</p>
+              <button>copy</button>
+            </div>
           </div>
           <div className="advanced-statistics-container">
             <div className="advanced-statistics-title">

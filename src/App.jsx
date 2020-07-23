@@ -19,6 +19,11 @@ const App = () => {
                 <li>Pricing</li>
                 <li>Resources</li>
               </ul>
+              <div class="burger-menu">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+              </div>
             </div>
             <div className="login-signup-container">
               <ul>
@@ -39,6 +44,7 @@ const App = () => {
               <button>Get Started</button>
             </div>
             <div className="cta-image">
+              <div className="menu"></div>
               <SVGImages name="illustrationWorking" />
             </div>
           </div>

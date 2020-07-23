@@ -496,8 +496,72 @@ footer {
       align-self: flex-start;
 
       svg {
+        cursor: pointer;
         :hover {
           fill: #2bd0d0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  header {
+    .header-content-container {
+      width: 375px;
+      nav {
+        margin: 0 24px 23px 24px;
+        height: 33px;
+
+        .links-container {
+          width: 100%;
+          justify-content: space-between;
+          .burger-menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 21px;
+
+            .burger-bar {
+              height: 3px;
+              width: 100%;
+              background-color: #9e9aa8;
+            }
+          }
+
+          ul {
+            display: none;
+          }
+        }
+
+        .login-signup-container {
+          display: none;
+        }
+      }
+      .cta-container {
+        flex-direction: column-reverse;
+        height: unset;
+        margin: 0 24px 0 24px;
+        .cta-content {
+          margin: unset;
+          width: 327px;
+        }
+
+        .cta-image {
+          svg {
+            width: 327px;
+            // height: 270px;
+            background-size: 327px 270px;
+          }
+
+          .menu {
+            display: none;
+            width: 100%;
+            height: 383px;
+            background: #3a3054;
+            border-radius: 10px;
+          }
         }
       }
     }

@@ -34,13 +34,11 @@ const App = () => {
           </nav>
           <div className="cta-container">
             <div className="cta-content">
-              <div>
-                <h1>More than just shorter links</h1>
-                <h5>
-                  Build your brand’s recognition and get detailed insights on
-                  how your links are performing.
-                </h5>
-              </div>
+              <h1>More than just shorter links</h1>
+              <h5>
+                Build your brand’s recognition and get detailed insights on how
+                your links are performing.
+              </h5>
               <button>Get Started</button>
             </div>
             <div className="cta-image">
@@ -61,11 +59,13 @@ const App = () => {
           <div className="shortened-url-container">
             <div className="shortened-url-content-container">
               <p>https://shortenedUrl.test</p>
+              <div className="divider"></div>
               <p>https://rel.link/test</p>
               <button>copy</button>
             </div>
             <div className="shortened-url-content-container">
               <p>https://shortenedUrl.test</p>
+              <div className="divider"></div>
               <p>https://rel.link/test</p>
               <button>copy</button>
             </div>

@@ -2,32 +2,34 @@ import React, { useState } from "react";
 import "./App.scss";
 import SVGImages from "./SVGImages";
 import Axios from "axios";
+import ShortenedURL from "./components/ShortenedURL";
 const App = () => {
   const [formData, setFormData] = useState("");
   const [shortenedUrls, setShortenedUrls] = useState([]);
-  const textAreaRef = useRef(null);
 
   const handleURLSubmit = async () => {
-    const { data } = await Axios({
-      method: "POST",
-      url: "https://rel.ink/api/links/",
-      data: {
-        url: formData,
-      },
-    });
+    if (!shortenedUrls.some((e) => e.originalUrl === formData)) {
+      try {
+        const { data } = await Axios({
+          method: "POST",
+          url: "https://rel.ink/api/links/",
+          data: {
+            url: formData,
+          },
+        });
 
-    console.log(data);
-
-    setShortenedUrls([
-      ...shortenedUrls,
-      {
-        originalUrl: formData,
-        hashId: data.hashid,
-      },
-    ]);
+        setShortenedUrls([
+          ...shortenedUrls,
+          {
+            originalUrl: formData,
+            hashId: data.hashid,
+          },
+        ]);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
-
-  const copyToClipBoard = () => {};
 
   return (
     <React.Fragment>
@@ -46,10 +48,10 @@ const App = () => {
                 <li>Pricing</li>
                 <li>Resources</li>
               </ul>
-              <div class="burger-menu">
-                <div class="burger-bar"></div>
-                <div class="burger-bar"></div>
-                <div class="burger-bar"></div>
+              <div className="burger-menu">
+                <div className="burger-bar"></div>
+                <div className="burger-bar"></div>
+                <div className="burger-bar"></div>
               </div>
             </div>
             <div className="login-signup-container">
@@ -79,30 +81,28 @@ const App = () => {
       <main>
         <div className="main-content-container">
           <div className="url-copy-container">
-            <input
-              type="url"
-              name="url"
-              pattern="https://.*"
-              size="30"
-              required
-              onChange={(event) => setFormData(event.target.value)}
-              value={formData}
-              placeholder="Shorten a link here..."
-            />
-            <small>Please add a link</small>
-            <button onClick={handleURLSubmit}>Shorten It!</button>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <input
+                type="url"
+                name="url"
+                pattern="https://.*"
+                size="30"
+                required
+                onChange={(event) => setFormData(event.target.value)}
+                value={formData}
+                placeholder="Shorten a link here..."
+              />
+              <small>Please add a link</small>
+              <button onClick={handleURLSubmit}>Shorten It!</button>
+            </form>
           </div>
           <div className="shortened-url-container">
-            {shortenedUrls.map((shortenedUrl) => {
-              return (
-                <div className="shortened-url-content-container">
-                  <p>{shortenedUrl.originalUrl}</p>
-                  <div className="divider"></div>
-                  <p>https://rel.ink/api/links/{shortenedUrl.hashId}</p>
-                  <button onClick>copy</button>
-                </div>
-              );
-            })}
+            {shortenedUrls.map((shortenedUrl) => (
+              <ShortenedURL
+                key={shortenedUrl.hashId}
+                shortenedUrl={shortenedUrl}
+              />
+            ))}
           </div>
           <div className="advanced-statistics-container">
             <div className="advanced-statistics-title">

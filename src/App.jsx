@@ -6,6 +6,7 @@ import ShortenedURL from "./components/ShortenedURL";
 const App = () => {
   const [formData, setFormData] = useState("");
   const [shortenedUrls, setShortenedUrls] = useState([]);
+  const [toggleMenu, setToggleMenu] = useState(false);
 
   const handleURLSubmit = async () => {
     if (!shortenedUrls.some((e) => e.originalUrl === formData)) {
@@ -31,6 +32,10 @@ const App = () => {
     }
   };
 
+  const handleBurgerMenuClick = () => {
+    setToggleMenu((prevState) => !prevState);
+  };
+
   return (
     <React.Fragment>
       <header className="header-container">
@@ -48,7 +53,7 @@ const App = () => {
                 <li>Pricing</li>
                 <li>Resources</li>
               </ul>
-              <div className="burger-menu">
+              <div onClick={handleBurgerMenuClick} className="burger-menu">
                 <div className="burger-bar"></div>
                 <div className="burger-bar"></div>
                 <div className="burger-bar"></div>
@@ -71,7 +76,14 @@ const App = () => {
               <button>Get Started</button>
             </div>
             <div className="cta-image">
-              <div className="menu"></div>
+              <div className={toggleMenu ? "menu show" : "menu"}>
+                <p>Feature</p>
+                <p>Pricing</p>
+                <p>Resources</p>
+                <div className="divider"></div>
+                <p>Login</p>
+                <button>Sign Up</button>
+              </div>
               <SVGImages name="illustrationWorking" />
             </div>
           </div>
@@ -217,7 +229,6 @@ const App = () => {
           </div>
         </div>
       </footer>
-      {/* // </div> */}
     </React.Fragment>
   );
 };

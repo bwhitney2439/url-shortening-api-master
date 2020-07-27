@@ -242,6 +242,7 @@ main {
         font-size: 20px;
         line-height: 36px;
         letter-spacing: 0.15px;
+        outline: none;
 
         ::placeholder {
           /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -256,7 +257,12 @@ main {
         }
       }
 
+      .is-danger {
+        border: 3px solid #f46363;
+      }
+
       small {
+        width: 100%;
         position: absolute;
         left: 5.77%;
         right: 81.53%;

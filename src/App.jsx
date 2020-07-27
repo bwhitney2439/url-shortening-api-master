@@ -38,10 +38,12 @@ const App = () => {
     setToggleMenu((prevState) => !prevState);
   };
 
-  const { values, handleChange, handleSubmit } = useForm(
+  const { values, errors, handleChange, handleSubmit } = useForm(
     handleURLSubmit,
     validate
   );
+
+  console.log(errors);
 
   return (
     <React.Fragment>
@@ -102,15 +104,13 @@ const App = () => {
           <div className="url-copy-container">
             <form onSubmit={handleSubmit}>
               <input
-                type="url"
                 name="url"
-                size="30"
-                required
+                className={errors.url && "is-danger"}
                 onChange={handleChange}
                 value={values.url || ""}
                 placeholder="Shorten a link here..."
               />
-              <small>Please add a link</small>
+              {errors.url && <small>{errors.url}</small>}
               <button type="submit">Shorten It!</button>
             </form>
           </div>

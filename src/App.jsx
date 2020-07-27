@@ -3,26 +3,28 @@ import "./App.scss";
 import SVGImages from "./SVGImages";
 import Axios from "axios";
 import ShortenedURL from "./components/ShortenedURL";
+import validate from "./components/UrlFormValidationRules";
+import useForm from "./hooks/useForm";
 const App = () => {
-  const [formData, setFormData] = useState("");
+  // const [formData, setFormData] = useState("");
   const [shortenedUrls, setShortenedUrls] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
 
   const handleURLSubmit = async () => {
-    if (!shortenedUrls.some((e) => e.originalUrl === formData)) {
+    if (!shortenedUrls.some((e) => e.originalUrl === values.url)) {
       try {
         const { data } = await Axios({
           method: "POST",
           url: "https://rel.ink/api/links/",
           data: {
-            url: formData,
+            url: values.url,
           },
         });
 
         setShortenedUrls([
           ...shortenedUrls,
           {
-            originalUrl: formData,
+            originalUrl: values.url,
             hashId: data.hashid,
           },
         ]);
@@ -35,6 +37,11 @@ const App = () => {
   const handleBurgerMenuClick = () => {
     setToggleMenu((prevState) => !prevState);
   };
+
+  const { values, handleChange, handleSubmit } = useForm(
+    handleURLSubmit,
+    validate
+  );
 
   return (
     <React.Fragment>
@@ -93,19 +100,18 @@ const App = () => {
       <main>
         <div className="main-content-container">
           <div className="url-copy-container">
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleSubmit}>
               <input
                 type="url"
                 name="url"
-                pattern="https://.*"
                 size="30"
                 required
-                onChange={(event) => setFormData(event.target.value)}
-                value={formData}
+                onChange={handleChange}
+                value={values.url || ""}
                 placeholder="Shorten a link here..."
               />
               <small>Please add a link</small>
-              <button onClick={handleURLSubmit}>Shorten It!</button>
+              <button type="submit">Shorten It!</button>
             </form>
           </div>
           <div className="shortened-url-container">

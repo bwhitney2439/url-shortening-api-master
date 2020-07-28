@@ -3,12 +3,23 @@ import "./App.scss";
 import SVGImages from "./SVGImages";
 import Axios from "axios";
 import ShortenedURL from "./components/ShortenedURL";
-import validate from "./components/UrlFormValidationRules";
 import useForm from "./hooks/useForm";
+
 const App = () => {
-  // const [formData, setFormData] = useState("");
   const [shortenedUrls, setShortenedUrls] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
+
+  const validateURL = (values) => {
+    let errors = {};
+    const url = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g;
+    console.log(values);
+    if (!values.url) {
+      errors.url = "URL is required";
+    } else if (!url.test(values.url)) {
+      errors.url = "URL is invalid";
+    }
+    return errors;
+  };
 
   const handleURLSubmit = async () => {
     if (!shortenedUrls.some((e) => e.originalUrl === values.url)) {
@@ -40,7 +51,8 @@ const App = () => {
 
   const { values, errors, handleChange, handleSubmit } = useForm(
     handleURLSubmit,
-    validate
+    {},
+    validateURL
   );
 
   console.log(errors);

@@ -4,10 +4,18 @@ import SVGImages from "./SVGImages";
 import Axios from "axios";
 import ShortenedURL from "./components/ShortenedURL";
 import useForm from "./hooks/useForm";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const App = () => {
   const [shortenedUrls, setShortenedUrls] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
+  const {
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+    isLoading,
+    user,
+  } = useAuth0();
 
   const validateURL = (values) => {
     let errors = {};
@@ -56,7 +64,11 @@ const App = () => {
   );
 
   console.log(errors);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
+  console.log(user);
   return (
     <React.Fragment>
       <header className="header-container">
@@ -82,7 +94,11 @@ const App = () => {
             </div>
             <div className="login-signup-container">
               <ul>
-                <li>Login</li>
+                {isAuthenticated ? (
+                  <li onClick={logout}>Logout</li>
+                ) : (
+                  <li onClick={loginWithRedirect}>Login</li>
+                )}
               </ul>
               <button>Sign up</button>
             </div>

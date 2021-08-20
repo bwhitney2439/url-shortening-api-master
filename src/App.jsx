@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import SVGImages from "./SVGImages";
 import Axios from "axios";
@@ -50,9 +50,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    const { data } = await Axios({
+    const { data } = Axios({
       url: "http://api.open-notify.org/astros.json",
-    });
+    }).then((data) => data);
   }, []);
 
   const handleBurgerMenuClick = () => {

@@ -9,17 +9,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 const App = () => {
   const [shortenedUrls, setShortenedUrls] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false);
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-    isLoading,
-    user,
-  } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, isLoading, user } =
+    useAuth0();
 
   const validateURL = (values) => {
     let errors = {};
-    const url = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g;
+    const url =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g;
     console.log(values);
     if (!values.url) {
       errors.url = "URL is required";
@@ -52,6 +48,12 @@ const App = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const { data } = await Axios({
+      url: "http://api.open-notify.org/astros.json",
+    });
+  }, []);
 
   const handleBurgerMenuClick = () => {
     setToggleMenu((prevState) => !prevState);
